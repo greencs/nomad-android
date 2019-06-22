@@ -25,7 +25,7 @@
     <!-- Can be regular (full input), prefix (subdomain input) and suffix (directory input) -->
     <!-- Requires server url to be set -->
     <string name="server_input_type">regular</string>
-    <bool name="show_provider_or_own_installation">true</bool>
+    <bool name="show_provider_or_own_installation">false</bool>
     <string name="provider_registration_server">https://www.nextcloud.com/register</string>
 
     <!-- Flags to enable/disable some features -->
