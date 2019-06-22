@@ -141,7 +141,7 @@ We manage translations via [Transifex](https://www.transifex.com/nextcloud/nextc
 # Releases
 At the moment we are releasing the app in two app stores:
 
-* [Google Play Store](https://play.google.com/store/apps/details?id=com.nextcloud.client)
+* [Google Play Store](https://play.google.com/store/apps/details?id=ca.greencs.nomad)
 * [f-droid](https://f-droid.org/repository/browse/?fdfilter=com.nextcloud)
 
 
@@ -213,4 +213,4 @@ Release Candidate releases are based on the git [master](https://github.com/next
 ### Dev Release
 Dev releases are based on the [master](https://github.com/nextcloud/android/tree/master) branch and are done independently from stable releases for people willing to test new features and provide valuable feedback on new features to be incorporated before a feature gets released in the stable app.
 
-The deployment/build is done once a day automatically. If code has changed a new apk will be published [here](https://download.nextcloud.com/android/dev) and it will, with a little delay, be available on [Fdroid](https://f-droid.org/repository/browse/?fdfilter=nextcloud&fdid=com.nextcloud.android.beta).
+The deployment/build is done once a day automatically. If code has changed a new apk will be published [here](https://download.nextcloud.com/android/dev) and it will, with a little delay, be available on [Fdroid](https://f-droid.org/repository/browse/?fdfilter=nextcloud&fdid=ca.greencs.nomad.beta).

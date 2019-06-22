@@ -4,10 +4,10 @@
 
 [<img src="https://play.google.com/intl/en_us/badges/images/generic/en_badge_web_generic.png" 
       alt="Download from Google Play" 
-      height="80">](https://play.google.com/store/apps/details?id=com.nextcloud.client)
+      height="80">](https://play.google.com/store/apps/details?id=ca.greencs.nomad)
 [<img src="https://f-droid.org/badge/get-it-on.png"
       alt="Get it on F-Droid"
-      height="80">](https://f-droid.org/packages/com.nextcloud.client/)
+      height="80">](https://f-droid.org/packages/ca.greencs.nomad/)
 
 **The Android client for [Nextcloud](https://nextcloud.com). Easily work with your data on your Nextcloud.**
 
@@ -45,7 +45,7 @@ Easy starting points are also reviewing [pull requests](https://github.com/nextc
 #### With a computer:
 - connect the device via USB
 - open command prompt/terminal
-- enter `adb logcat | grep "$(adb shell ps | awk '/com.nextcloud.client/{print $2}')" > logcatOutput.txt` to save the output to this file
+- enter `adb logcat | grep "$(adb shell ps | awk '/ca.greencs.nomad/{print $2}')" > logcatOutput.txt` to save the output to this file
 
 **Note:** You must have [adb](https://developer.android.com/studio/releases/platform-tools.html) installed first!
 
@@ -63,7 +63,7 @@ or
 
 ## Development version
 - [APK (direct download)](https://download.nextcloud.com/android/dev/latest.apk)
-- [F-Droid](https://f-droid.org/repository/browse/?fdfilter=nextcloud&fdid=com.nextcloud.android.beta)
+- [F-Droid](https://f-droid.org/repository/browse/?fdfilter=nextcloud&fdid=ca.greencs.nomad.beta)
 
 ## Support
 

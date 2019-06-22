@@ -76,9 +76,9 @@ repositories {
 }
 
 // semantic versioning for version code
-def versionMajor = 3
-def versionMinor = 7
-def versionPatch = 0
+def versionMajor = 1
+def versionMinor = 0
+def versionPatch = 1
 def versionBuild = 0 // 0-50=Alpha / 51-98=RC / 90-99=stable
 
 def taskRequest = getGradle().getStartParameter().getTaskRequests().toString()
@@ -140,24 +140,24 @@ android {
         productFlavors {
             // used for f-droid
             generic {
-                applicationId 'com.nextcloud.client'
+                applicationId 'ca.greencs.nomad'
                 dimension "default"
             }
 
             gplay {
-                applicationId 'com.nextcloud.client'
+                applicationId 'ca.greencs.nomad'
                 dimension "default"
             }
 
             versionDev {
-                applicationId "com.nextcloud.android.beta"
+                applicationId "ca.greencs.nomad.beta"
                 dimension "default"
                 versionCode 20190622
                 versionName "20190622"
             }
 
             qa {
-                applicationId "com.nextcloud.android.qa"
+                applicationId "ca.greencs.nomad.qa"
                 dimension "default"
                 versionCode 1
                 versionName "1"
