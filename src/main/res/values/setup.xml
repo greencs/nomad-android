@@ -5,7 +5,7 @@
     <bool name="dev_version_direct_download_enabled">false</bool>
 
     <!-- App name  and other strings-->
-    <string name="app_name">GreenCS Nomad</string>
+    <string name="app_name">Nomad</string>
     <string name="account_type">greencs</string>     <!-- better if was a domain name; but changing it now would require migrate accounts when the app is updated -->
     <string name="authority">ca.greencs</string>    <!-- better if was the app package with ".provider" appended ; it identifies the provider -->
     <string name="users_and_groups_search_authority">ca.greencs.nomad.providers.UsersAndGroupsSearchProvider</string>
@@ -16,7 +16,7 @@
     <string name="db_file">greencs.db</string>
     <string name="db_name">greencs</string>
     <string name="data_folder">greencs</string>
-    <string name="default_display_name_for_root_folder">GreenCS Nomad</string>
+    <string name="default_display_name_for_root_folder">Nomad</string>
     <string name="nextcloud_user_agent">Mozilla/5.0 (Android) Nomad-android/%1$s</string>
 
     <!-- URLs and flags related -->
