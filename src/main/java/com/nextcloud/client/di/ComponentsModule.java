@@ -21,16 +21,15 @@
 package com.nextcloud.client.di;
 
 import com.nextcloud.client.onboarding.FirstRunActivity;
+import com.nextcloud.client.etm.EtmActivity;
 import com.nextcloud.client.onboarding.WhatsNewActivity;
 import com.owncloud.android.authentication.AuthenticatorActivity;
 import com.owncloud.android.authentication.DeepLinkLoginActivity;
 import com.owncloud.android.files.BootupBroadcastReceiver;
 import com.owncloud.android.files.services.FileDownloader;
 import com.owncloud.android.files.services.FileUploader;
-import com.owncloud.android.jobs.NContentObserverJob;
 import com.owncloud.android.jobs.NotificationJob;
 import com.owncloud.android.providers.DiskLruImageCacheFileProvider;
-import com.owncloud.android.providers.DocumentsStorageProvider;
 import com.owncloud.android.providers.UsersAndGroupsSearchProvider;
 import com.owncloud.android.services.AccountManagerService;
 import com.owncloud.android.services.OperationsService;
@@ -123,6 +122,7 @@ abstract class ComponentsModule {
     @ContributesAndroidInjector abstract UploadPathActivity uploadPathActivity();
     @ContributesAndroidInjector abstract UserInfoActivity userInfoActivity();
     @ContributesAndroidInjector abstract WhatsNewActivity whatsNewActivity();
+    @ContributesAndroidInjector abstract EtmActivity etmActivity();
 
     @ContributesAndroidInjector abstract ExtendedListFragment extendedListFragment();
     @ContributesAndroidInjector abstract FileDetailFragment fileDetailFragment();
@@ -145,11 +145,9 @@ abstract class ComponentsModule {
     @ContributesAndroidInjector abstract BootupBroadcastReceiver bootupBroadcastReceiver();
     @ContributesAndroidInjector abstract NotificationJob.NotificationReceiver notificationJobBroadcastReceiver();
 
-    @ContributesAndroidInjector abstract DocumentsStorageProvider documentsStorageProvider();
     @ContributesAndroidInjector abstract UsersAndGroupsSearchProvider usersAndGroupsSearchProvider();
     @ContributesAndroidInjector abstract DiskLruImageCacheFileProvider diskLruImageCacheFileProvider();
 
     @ContributesAndroidInjector abstract AccountManagerService accountManagerService();
     @ContributesAndroidInjector abstract OperationsService operationsService();
-    @ContributesAndroidInjector abstract NContentObserverJob contentObserverJob();
 }

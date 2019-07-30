@@ -361,7 +361,7 @@ public class AuthenticatorActivity extends AccountAuthenticatorActivity
 
     private static String getWebLoginUserAgent() {
         return Build.MANUFACTURER.substring(0, 1).toUpperCase(Locale.getDefault()) +
-                Build.MANUFACTURER.substring(1).toLowerCase(Locale.getDefault()) + " " + Build.MODEL;
+            Build.MANUFACTURER.substring(1).toLowerCase(Locale.getDefault()) + " " + Build.MODEL + " (Android)";
     }
 
     @SuppressLint("SetJavaScriptEnabled")
@@ -505,6 +505,9 @@ public class AuthenticatorActivity extends AccountAuthenticatorActivity
 
         if (loginUrlInfo != null) {
             try {
+                if (mHostUrlInput != null) {
+                    mHostUrlInput.setText("");
+                }
                 mServerInfo.mBaseUrl = AuthenticatorUrlUtils.normalizeUrlSuffix(loginUrlInfo.serverAddress);
                 webViewUser = loginUrlInfo.username;
                 webViewPassword = loginUrlInfo.password;
@@ -1255,7 +1258,7 @@ public class AuthenticatorActivity extends AccountAuthenticatorActivity
 
             // show outdated warning
             if (getResources().getBoolean(R.bool.show_outdated_server_warning) &&
-                MainApp.OUTDATED_SERVER_VERSION.compareTo(mServerInfo.mVersion) >= 0 &&
+                MainApp.OUTDATED_SERVER_VERSION.isSameMajorVersion(mServerInfo.mVersion) &&
                 !mServerInfo.hasExtendedSupport) {
                 DisplayUtils.showServerOutdatedSnackbar(this, Snackbar.LENGTH_INDEFINITE);
             }
@@ -1719,7 +1722,7 @@ public class AuthenticatorActivity extends AccountAuthenticatorActivity
             mAccountMgr.setUserData(mAccount, Constants.KEY_DISPLAY_NAME, userInfo.getDisplayName());
             mAccountMgr.setUserData(mAccount, Constants.KEY_USER_ID, userInfo.getId());
             mAccountMgr.setUserData(mAccount, Constants.KEY_OC_ACCOUNT_VERSION,
-                                    Integer.toString(AccountUtils.ACCOUNT_VERSION_WITH_PROPER_ID));
+                                    Integer.toString(UserAccountManager.ACCOUNT_VERSION_WITH_PROPER_ID));
 
 
             setAccountAuthenticatorResult(intent.getExtras());

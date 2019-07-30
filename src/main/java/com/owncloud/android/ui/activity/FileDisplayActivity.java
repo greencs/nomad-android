@@ -27,7 +27,6 @@ package com.owncloud.android.ui.activity;
 
 import android.Manifest;
 import android.accounts.Account;
-import android.accounts.AccountManager;
 import android.accounts.AuthenticatorException;
 import android.annotation.TargetApi;
 import android.app.Activity;
@@ -57,7 +56,6 @@ import android.view.ViewTreeObserver;
 import android.widget.EditText;
 import android.widget.ImageView;
 
-import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.snackbar.Snackbar;
 import com.nextcloud.client.appinfo.AppInfo;
 import com.nextcloud.client.di.Injectable;
@@ -378,7 +376,7 @@ public class FileDisplayActivity extends FileActivity
 
             // show outdated warning
             if (getResources().getBoolean(R.bool.show_outdated_server_warning) &&
-                MainApp.OUTDATED_SERVER_VERSION.compareTo(serverVersion) >= 0 &&
+                MainApp.OUTDATED_SERVER_VERSION.isSameMajorVersion(serverVersion) &&
                 getCapabilities().getExtendedSupport().isFalse()) {
                 DisplayUtils.showServerOutdatedSnackbar(this, Snackbar.LENGTH_LONG);
             }
@@ -1178,16 +1176,6 @@ public class FileDisplayActivity extends FileActivity
         }
     }
 
-    private void revertBottomNavigationBarToAllFiles() {
-        if (getResources().getBoolean(R.bool.bottom_toolbar_enabled)) {
-            BottomNavigationView bottomNavigationView = getListOfFilesFragment().getView()
-                    .findViewById(R.id.bottom_navigation_view);
-            if (bottomNavigationView.getMenu().findItem(R.id.nav_bar_settings).isChecked()) {
-                bottomNavigationView.getMenu().findItem(R.id.nav_bar_files).setChecked(true);
-            }
-        }
-    }
-
     @Override
     public void onBackPressed() {
         boolean isDrawerOpen = isDrawerOpen();
@@ -1265,8 +1253,6 @@ public class FileDisplayActivity extends FileActivity
             startFile = getIntent().getParcelableExtra(EXTRA_FILE);
             setFile(startFile);
         }
-
-        revertBottomNavigationBarToAllFiles();
 
         // refresh list of files
         if (searchView != null && !TextUtils.isEmpty(searchQuery)) {
@@ -1987,15 +1973,17 @@ public class FileDisplayActivity extends FileActivity
             // if share to user and share via link multiple ocshares are returned,
             // therefore filtering for public_link
             String link = "";
+            OCFile file = null;
             for (Object object : result.getData()) {
                 OCShare shareLink = (OCShare) object;
                 if (TAG_PUBLIC_LINK.equalsIgnoreCase(shareLink.getShareType().name())) {
                     link = shareLink.getShareLink();
+                    file = getStorageManager().getFileByPath(shareLink.getPath());
                     break;
                 }
             }
 
-            copyAndShareFileLink(this, link);
+            copyAndShareFileLink(this, file, link);
 
             if (fileDetailFragment != null && fileDetailFragment.getFileDetailSharingFragment() != null) {
                 fileDetailFragment.getFileDetailSharingFragment().refreshPublicShareFromDB();
@@ -2650,9 +2638,6 @@ public class FileDisplayActivity extends FileActivity
             DisplayUtils.showSnackMessage(this, getString(R.string.error_retrieving_file));
             return;
         }
-
-        AccountManager am = AccountManager.get(this);
-        String userId = am.getUserData(getAccount(), AccountUtils.Constants.KEY_USER_ID);
 
         FileDataStorageManager storageManager = getStorageManager();
 

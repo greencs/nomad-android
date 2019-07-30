@@ -27,9 +27,6 @@ import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
-import android.app.Service;
-import android.content.BroadcastReceiver;
-import android.content.ContentProvider;
 import android.content.ContentResolver;
 import android.content.Context;
 import android.content.Intent;
@@ -48,6 +45,7 @@ import com.nextcloud.client.account.UserAccountManager;
 import com.nextcloud.client.appinfo.AppInfo;
 import com.nextcloud.client.device.PowerManagementService;
 import com.nextcloud.client.di.ActivityInjector;
+import com.nextcloud.client.di.AppComponent;
 import com.nextcloud.client.di.DaggerAppComponent;
 import com.nextcloud.client.network.ConnectivityService;
 import com.nextcloud.client.onboarding.OnboardingService;
@@ -91,15 +89,10 @@ import androidx.annotation.RequiresApi;
 import androidx.annotation.StringRes;
 import androidx.appcompat.app.AlertDialog;
 import androidx.core.util.Pair;
-import androidx.fragment.app.Fragment;
 import androidx.multidex.MultiDexApplication;
 import dagger.android.AndroidInjector;
 import dagger.android.DispatchingAndroidInjector;
-import dagger.android.HasActivityInjector;
-import dagger.android.HasBroadcastReceiverInjector;
-import dagger.android.HasContentProviderInjector;
-import dagger.android.HasServiceInjector;
-import dagger.android.support.HasSupportFragmentInjector;
+import dagger.android.HasAndroidInjector;
 import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 
 import static com.owncloud.android.ui.activity.ContactsPreferenceActivity.PREFERENCE_CONTACTS_AUTOMATIC_BACKUP;
@@ -110,12 +103,7 @@ import static com.owncloud.android.ui.activity.ContactsPreferenceActivity.PREFER
  * <p>
  * Contains methods to build the "static" strings. These strings were before constants in different classes
  */
-public class MainApp extends MultiDexApplication implements
-    HasActivityInjector,
-    HasSupportFragmentInjector,
-    HasServiceInjector,
-    HasContentProviderInjector,
-    HasBroadcastReceiverInjector {
+public class MainApp extends MultiDexApplication implements HasAndroidInjector {
 
     public static final OwnCloudVersion OUTDATED_SERVER_VERSION = OwnCloudVersion.nextcloud_13;
     public static final OwnCloudVersion MINIMUM_SUPPORTED_SERVER_VERSION = OwnCloudVersion.nextcloud_12;
@@ -132,19 +120,7 @@ public class MainApp extends MultiDexApplication implements
     protected AppPreferences preferences;
 
     @Inject
-    protected DispatchingAndroidInjector<Activity> dispatchingActivityInjector;
-
-    @Inject
-    protected DispatchingAndroidInjector<Fragment> dispatchingFragmentInjector;
-
-    @Inject
-    protected DispatchingAndroidInjector<Service> dispatchingServiceInjector;
-
-    @Inject
-    protected DispatchingAndroidInjector<ContentProvider> dispatchingContentProviderInjector;
-
-    @Inject
-    protected DispatchingAndroidInjector<BroadcastReceiver> dispatchingBroadcastReceiverInjector;
+    protected DispatchingAndroidInjector<Object> dispatchingAndroidInjector;
 
     @Inject
     protected UserAccountManager accountManager;
@@ -175,6 +151,22 @@ public class MainApp extends MultiDexApplication implements
         mContext = context;
     }
 
+    /**
+     * Temporary getter replacing Dagger DI
+     * TODO: remove when cleaning DI in NContentObserverJob
+     */
+    public AppPreferences getPreferences() {
+        return preferences;
+    }
+
+    /**
+     * Temporary getter replacing Dagger DI
+     * TODO: remove when cleaning DI in NContentObserverJob
+     */
+    public PowerManagementService getPowerManagementService() {
+        return powerManagementService;
+    }
+
     @Override
     protected void attachBaseContext(Context base) {
         super.attachBaseContext(base);
@@ -194,7 +186,10 @@ public class MainApp extends MultiDexApplication implements
 
         Thread t = new Thread(() -> {
             // best place, before any access to AccountManager or database
-            accountManager.migrateUserId();
+            if (!preferences.isUserIdMigrated()) {
+                final boolean migrated = accountManager.migrateUserId();
+                preferences.setMigratedUserId(migrated);
+            }
         });
         t.start();
 
@@ -713,27 +708,8 @@ public class MainApp extends MultiDexApplication implements
     }
 
     @Override
-    public AndroidInjector<Activity> activityInjector() {
-        return dispatchingActivityInjector;
+    public AndroidInjector<Object> androidInjector() {
+        return dispatchingAndroidInjector;
     }
 
-    @Override
-    public AndroidInjector<Fragment> supportFragmentInjector() {
-        return dispatchingFragmentInjector;
-    }
-
-    @Override
-    public AndroidInjector<Service> serviceInjector() {
-        return dispatchingServiceInjector;
-    }
-
-    @Override
-    public AndroidInjector<ContentProvider> contentProviderInjector() {
-        return dispatchingContentProviderInjector;
-    }
-
-    @Override
-    public AndroidInjector<BroadcastReceiver> broadcastReceiverInjector() {
-        return dispatchingBroadcastReceiverInjector;
-    }
 }
