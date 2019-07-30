@@ -19,6 +19,7 @@
     <string name="actionbar_logger">Registri</string>
     <string name="actionbar_mkdir">Nuova cartella</string>
     <string name="actionbar_move">Sposta</string>
+    <string name="actionbar_open_as_richdocument">Apri con Collabora</string>
     <string name="actionbar_open_as_richdocument_parameter">Apri con %1$s</string>
     <string name="actionbar_open_with">Apri con</string>
     <string name="actionbar_search">Cerca</string>
@@ -42,9 +43,13 @@
     <string name="auth_bad_oc_version_title">Versione del server non riconosciuta</string>
     <string name="auth_can_not_auth_against_server">Impossibile autenticarsi a questo server</string>
     <string name="auth_check_server">Controlla server</string>
+    <string name="auth_connecting_auth_server">Connessione al server di autenticazione…</string>
     <string name="auth_connection_established">Connessione stabilita</string>
     <string name="auth_expired_basic_auth_toast">Digita la password attuale</string>
+    <string name="auth_expired_oauth_token_toast">Autorizzazione scaduta. Richiedi l\'autorizzazione</string>
+    <string name="auth_expired_saml_sso_token_toast">Sessione scaduta. Riconnettiti</string>
     <string name="auth_fail_get_user_name">Il server non restituisce un ID utente corretto, contatta un amministratore</string>
+    <string name="auth_getting_authorization">Recupero delle autorizzazioni in corso…</string>
     <string name="auth_host_address">Indirizzo del server</string>
     <string name="auth_host_url">Indirizzo server https://…</string>
     <string name="auth_illegal_login_used">Utilizzato URL di dati di accesso non consentito</string>
@@ -79,7 +84,6 @@
     <string name="auto_upload_path">/AutoUpload</string>
     <string name="autoupload_create_new_custom_folder">Crea nuova configurazione di cartella personalizzata</string>
     <string name="autoupload_custom_folder">Configura una cartella personalizzata</string>
-    <string name="autoupload_disable_power_save_check">Disabilita controllo di risparmio energetico</string>
     <string name="avatar">Avatar</string>
     <string name="battery_optimization_close">Chiudi</string>
     <string name="battery_optimization_disable">Disabilita</string>
@@ -406,6 +410,10 @@
     <string name="notifications_loading_activity">Caricamento notifiche in corso…</string>
     <string name="notifications_no_results_headline">Nessuna notifica</string>
     <string name="notifications_no_results_message">Controlla nuovamente più tardi.</string>
+    <string name="oauth_2_0_access_end_point_address_hint">Indirizzo terminatore di accesso </string>
+    <string name="oauth_2_0_auth_end_point_address_hint">Indirizzo terminatore di autenticazione </string>
+    <string name="oauth_check_onoff">Accedi con OAuth 2.0</string>
+    <string name="oauth_login_connection">Connessione al server OAuth 2.0…</string>
     <string name="offline_mode">Nessuna connessione a Internet</string>
     <string name="operation_canceled">L\'operazione è stata annullata</string>
     <string name="outdated_server">Il server ha raggiunto la fine della sua vita, aggiornalo!</string>
@@ -424,7 +432,7 @@
     <string name="participate_rc_fdroid">Ottieni la candidata al rilascio dall\'applicazione F-Droid</string>
     <string name="participate_rc_play_store">Ottieni la candidata al rilascio da Google Play</string>
     <string name="participate_release_candidate_headline">Candidata al rilascio</string>
-    <string name="participate_release_candidate_text">La candidata al rilascio (RC) è un\'istantanea della versione successiva e dovrebbe essere stabile. Effettuando dei test sulla tua configurazione, puoi aiutarci a esserne sicuri. Registrati per la fase di test su Google Play o controlla manualmente nella sezione \"Versione\" di F-Droid.</string>
+    <string name="participate_release_candidate_text">La candidata al rilascio (RC) è un\'istantanea della versione successiva e dovrebbe essere stabile. Effettuando dei test sulla tua configurazione, puoi aiutarci a esserene sicuri. Registrati per la fase test su Google Play o controlla manualmente nella sezione \"Versione\" di F-Droid.</string>
     <string name="participate_testing_bug_text">Trovato un bug? Stranezze?</string>
     <string name="participate_testing_headline">Aiutaci nella fase di test</string>
     <string name="participate_testing_report_text">Segnala un problema su GitHub</string>
@@ -447,8 +455,6 @@
     <string name="placeholder_media_time">12:23:45</string>
     <string name="placeholder_sentence">Questo è un segnaposto</string>
     <string name="placeholder_timestamp">2012/05/18 12:23 PM</string>
-    <string name="power_check_dialog_title">Disabilita controllo di risparmio energetico</string>
-    <string name="power_save_check_dialog_message">La disabilitazione del controllo di risparmio energetico potrebbe risultare in caricamenti di file in uno stato di bassa carica della batteria.</string>
     <string name="pref_behaviour_entries_delete_file">eliminato</string>
     <string name="pref_behaviour_entries_keep_file">lasciato nella cartella originale</string>
     <string name="pref_behaviour_entries_move">spostato nella cartella dell\'applicazione</string>
@@ -765,6 +771,8 @@
     <string name="wait_checking_credentials">Controllo delle credenziali memorizzate</string>
     <string name="wait_for_tmp_copy_from_private_storage">Copia file dall\'archiviazione privata</string>
     <string name="what_s_new_image">Immagine Cosa c\'è di nuovo</string>
+    <string name="whats_new_device_credentials_content">Utilizza qualcosa come un modello, password, PIN o la tua impronta digitale per tenere al sicuro i tuoi dati.</string>
+    <string name="whats_new_device_credentials_title">Usa protezione interna del dispositivo Android</string>
     <string name="whats_new_skip">Salta</string>
     <string name="whats_new_title">Prima volta su %1$s</string>
     <plurals name="sync_fail_in_favourites_content">

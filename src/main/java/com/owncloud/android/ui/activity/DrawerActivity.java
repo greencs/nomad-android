@@ -86,6 +86,7 @@ import com.owncloud.android.ui.activities.ActivitiesActivity;
 import com.owncloud.android.ui.events.AccountRemovedEvent;
 import com.owncloud.android.ui.events.ChangeMenuEvent;
 import com.owncloud.android.ui.events.DummyDrawerEvent;
+import com.owncloud.android.ui.events.MenuItemClickEvent;
 import com.owncloud.android.ui.events.SearchEvent;
 import com.owncloud.android.ui.fragment.OCFileListFragment;
 import com.owncloud.android.ui.trashbin.TrashbinActivity;
@@ -367,6 +368,7 @@ public abstract class DrawerActivity extends ToolbarActivity
 
         boolean hasSearchSupport = accountManager.getServerVersion(account).isSearchSupported();
 
+        DrawerMenuUtil.filterForBottomToolbarMenuItems(menu, getResources());
         DrawerMenuUtil.filterSearchMenuItems(menu, account, getResources(), hasSearchSupport);
         DrawerMenuUtil.filterTrashbinMenuItem(menu, account, capability, accountManager);
         DrawerMenuUtil.filterActivityMenuItem(menu, capability);
@@ -382,6 +384,23 @@ public abstract class DrawerActivity extends ToolbarActivity
         DrawerMenuUtil.removeMenuItem(menu, R.id.nav_synced_folders,
                 getResources().getBoolean(R.bool.syncedFolder_light));
         DrawerMenuUtil.removeMenuItem(menu, R.id.nav_logout, !getResources().getBoolean(R.bool.show_drawer_logout));
+    }
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void onMessageEvent(MenuItemClickEvent event) {
+        unsetAllDrawerMenuItems();
+
+        switch (event.menuItem.getItemId()) {
+            case R.id.nav_bar_files:
+                showFiles(false);
+                break;
+            case R.id.nav_bar_settings:
+                Intent settingsIntent = new Intent(getApplicationContext(), SettingsActivity.class);
+                startActivity(settingsIntent);
+                break;
+            default:
+                break;
+        }
     }
 
     @Subscribe(threadMode = ThreadMode.MAIN)

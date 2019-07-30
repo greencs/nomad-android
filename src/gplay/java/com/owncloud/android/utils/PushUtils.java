@@ -36,6 +36,7 @@ import com.nextcloud.client.preferences.AppPreferences;
 import com.nextcloud.client.preferences.AppPreferencesImpl;
 import com.owncloud.android.MainApp;
 import com.owncloud.android.R;
+import com.owncloud.android.authentication.AccountUtils;
 import com.owncloud.android.datamodel.ArbitraryDataProvider;
 import com.owncloud.android.datamodel.PushConfigurationState;
 import com.owncloud.android.datamodel.SignatureVerification;
@@ -261,7 +262,7 @@ public final class PushUtils {
                             } else if (remoteOperationResult.getCode() ==
                                     RemoteOperationResult.ResultCode.ACCOUNT_USES_STANDARD_PASSWORD) {
                                 arbitraryDataProvider.storeOrUpdateKeyValue(account.name,
-                                        UserAccountManager.ACCOUNT_USES_STANDARD_PASSWORD, "true");
+                                        AccountUtils.ACCOUNT_USES_STANDARD_PASSWORD, "true");
                             }
                         } catch (com.owncloud.android.lib.common.accounts.AccountUtils.AccountNotFoundException e) {
                             Log_OC.d(TAG, "Failed to find an account");

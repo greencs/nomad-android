@@ -19,6 +19,7 @@
     <string name="actionbar_logger">Žurnalai</string>
     <string name="actionbar_mkdir">Naujas aplankas</string>
     <string name="actionbar_move">Perkelti</string>
+    <string name="actionbar_open_as_richdocument">Atverti naudojant Collabora</string>
     <string name="actionbar_open_as_richdocument_parameter">Atverti naudojant %1$s</string>
     <string name="actionbar_open_with">Atverti naudojant</string>
     <string name="actionbar_search">Paieška</string>
@@ -41,9 +42,13 @@
     <string name="auth_bad_oc_version_title">Nežinoma serverio versija</string>
     <string name="auth_can_not_auth_against_server">Nepavyko autentifikuotis šiame serveryje</string>
     <string name="auth_check_server">Patikrinti serverį</string>
+    <string name="auth_connecting_auth_server">Jungiamasi prie tapatybės nustatymo serverio…</string>
     <string name="auth_connection_established">Ryšys užmegztas</string>
     <string name="auth_expired_basic_auth_toast">Prašome įvesti dabartinį slaptažodį</string>
+    <string name="auth_expired_oauth_token_toast">Autorizacijos laikas baigėsi. Prašome autorizuotis iš naujo</string>
+    <string name="auth_expired_saml_sso_token_toast">Jūsų seanso laikas baigėsi. Prašome prisijungti iš naujo</string>
     <string name="auth_fail_get_user_name">Jūsų serveris negrąžina teisingo naudotojo ID, susisiekite su administratoriumi</string>
+    <string name="auth_getting_authorization">Gaunamos prieigos teisės…</string>
     <string name="auth_host_address">Serverio adresas</string>
     <string name="auth_host_url">Serverio adresas https://…</string>
     <string name="auth_incorrect_address_title">Neteisingas serverio adreso formatas</string>
@@ -263,7 +268,6 @@
     <string name="filename_forbidden_characters">Neleistini simboliai: / \\ &lt; &gt; : \" | ? *</string>
     <string name="filename_forbidden_charaters_from_server">Failo pavadinime yra bent vienas neteisingas simbolis</string>
     <string name="filename_hint">Failo pavadinimas</string>
-    <string name="files_drop_not_supported">Tai yra Nextcloud ypatybė, prašome atsinaujinti.</string>
     <string name="folder_already_exists">Aplankas jau yra</string>
     <string name="folder_confirm_create">Sukurti</string>
     <string name="folder_icon">Aplanko piktograma</string>
@@ -348,6 +352,8 @@
     <string name="notifications_loading_activity">Įkeliami pranešimai…</string>
     <string name="notifications_no_results_headline">Pranešimų nėra</string>
     <string name="notifications_no_results_message">Prašome patikrinti vėliau</string>
+    <string name="oauth_check_onoff">Prisijungti naudojant oAuth2</string>
+    <string name="oauth_login_connection">Jungiamasi prie OAuth 2.0 serverio…</string>
     <string name="offline_mode">Nėra interneto ryšio</string>
     <string name="operation_canceled">Operacijos atsisakyta</string>
     <string name="overflow_menu">Daugiau meniu</string>
@@ -400,7 +406,6 @@
     <string name="prefs_instant_upload_path_use_subfolders_summary">Išsaugoti poaplankyje pagal metus ir mėnesį</string>
     <string name="prefs_instant_upload_path_use_subfolders_title">Naudoti poaplankius</string>
     <string name="prefs_license">Licencija</string>
-    <string name="prefs_lock_none">Nėra</string>
     <string name="prefs_log_delete_history_button">Ištrinti istoriją</string>
     <string name="prefs_manage_accounts">Tvarkyti paskyras</string>
     <string name="prefs_recommend">Rekomenduok draugui</string>
@@ -432,7 +437,6 @@
     <string name="resized_image_not_possible_download">Nėra prieinamas pakeisto dydžio paveikslas. Atsisiųsti pilno dydžio paveikslą?</string>
     <string name="restore">Atkurti failą</string>
     <string name="restore_button_description">Atkurti ištrintą failą</string>
-    <string name="retrieving_file">Gaunamas failas…</string>
     <string name="richdocuments_failed_to_load_document">Nepavyko įkelti dokumento!</string>
     <string name="saml_authentication_required_text">Reikalingas slaptažodis</string>
     <string name="saml_authentication_wrong_pass">Neteisingas slaptažodis</string>
@@ -620,16 +624,4 @@
     <string name="wait_checking_credentials">Dekriptuojami prisijungimo duomenys</string>
     <string name="wait_for_tmp_copy_from_private_storage">Kopijuojamas failas iš privačios saugyklos</string>
     <string name="whats_new_skip">Praleisti</string>
-    <plurals name="file_list__footer__folder">
-        <item quantity="one">%1$d aplankas</item>
-        <item quantity="few">%1$d aplankai</item>
-        <item quantity="many">%1$d aplankų</item>
-        <item quantity="other">%1$d aplankas</item>
-    </plurals>
-    <plurals name="file_list__footer__file">
-        <item quantity="one">%1$d failas</item>
-        <item quantity="few">%1$d failai</item>
-        <item quantity="many">%1$d failų</item>
-        <item quantity="other">%1$d failas</item>
-    </plurals>
     </resources>

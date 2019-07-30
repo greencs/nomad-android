@@ -46,7 +46,6 @@ import android.widget.Toast;
 import com.evernote.android.job.JobRequest;
 import com.evernote.android.job.util.Device;
 import com.nextcloud.client.account.UserAccountManager;
-import com.nextcloud.client.account.UserAccountManagerImpl;
 import com.nextcloud.client.preferences.AppPreferences;
 import com.nextcloud.client.preferences.AppPreferencesImpl;
 import com.owncloud.android.MainApp;
@@ -85,6 +84,10 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.inject.Inject;
+
+import dagger.android.AndroidInjection;
+
 import static com.owncloud.android.datamodel.OCFile.PATH_SEPARATOR;
 import static com.owncloud.android.datamodel.OCFile.ROOT_PATH;
 
@@ -97,7 +100,9 @@ public class DocumentsStorageProvider extends DocumentsProvider {
     private Map<Long, FileDataStorageManager> rootIdToStorageManager;
     private OwnCloudClient client;
 
-    UserAccountManager accountManager;
+    @Inject UserAccountManager accountManager;
+
+
 
     @Override
     public Cursor queryRoots(String[] projection) throws FileNotFoundException {
@@ -296,7 +301,7 @@ public class DocumentsStorageProvider extends DocumentsProvider {
 
     @Override
     public boolean onCreate() {
-        accountManager = UserAccountManagerImpl.fromContext(getContext());
+        AndroidInjection.inject(this);
         return true;
     }
 
@@ -526,11 +531,6 @@ public class DocumentsStorageProvider extends DocumentsProvider {
         OCFile newFile = currentStorageManager.getFileByPath(newFilePath);
 
         return String.valueOf(newFile.getFileId());
-    }
-
-    @Override
-    public void removeDocument(String documentId, String parentDocumentId) throws FileNotFoundException {
-        deleteDocument(documentId);
     }
 
     @Override

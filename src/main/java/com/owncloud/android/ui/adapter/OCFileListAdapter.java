@@ -49,6 +49,7 @@ import com.bumptech.glide.request.target.BitmapImageViewTarget;
 import com.nextcloud.client.account.UserAccountManager;
 import com.nextcloud.client.preferences.AppPreferences;
 import com.owncloud.android.R;
+import com.owncloud.android.authentication.AccountUtils;
 import com.owncloud.android.datamodel.FileDataStorageManager;
 import com.owncloud.android.datamodel.OCFile;
 import com.owncloud.android.datamodel.ThumbnailsCacheManager;
@@ -365,7 +366,7 @@ public class OCFileListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
                     ArrayList<String> sharees = (ArrayList<String>) file.getSharees();
 
                     // use fileOwner if not oneself, then add at first
-                    if (fileOwner != null && !fileOwner.equals(userId) && !sharees.contains(fileOwner)) {
+                    if (!fileOwner.equals(userId) && !sharees.contains(fileOwner)) {
                         sharees.add(fileOwner);
                     }
 

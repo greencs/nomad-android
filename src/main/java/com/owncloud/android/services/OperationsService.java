@@ -44,6 +44,8 @@ import com.owncloud.android.datamodel.OCFile;
 import com.owncloud.android.lib.common.OwnCloudAccount;
 import com.owncloud.android.lib.common.OwnCloudClient;
 import com.owncloud.android.lib.common.OwnCloudClientManagerFactory;
+import com.owncloud.android.lib.common.OwnCloudCredentials;
+import com.owncloud.android.lib.common.OwnCloudCredentialsFactory;
 import com.owncloud.android.lib.common.operations.OnRemoteOperationListener;
 import com.owncloud.android.lib.common.operations.RemoteOperation;
 import com.owncloud.android.lib.common.operations.RemoteOperationResult;
@@ -432,6 +434,7 @@ public class OperationsService extends Service {
             }
 
             if (next != null) {
+
                 mCurrentOperation = next.second;
                 RemoteOperationResult result = null;
                 try {
@@ -451,7 +454,17 @@ public class OperationsService extends Service {
                                     mService.getContentResolver()
                             );
                         } else {
-                            OwnCloudAccount ocAccount = new OwnCloudAccount(mLastTarget.mServerUrl, null);
+                            OwnCloudCredentials credentials = null;
+                            if (!TextUtils.isEmpty(mLastTarget.mCookie)) {
+                                // just used for GetUserName
+                                // TODO refactor to run GetUserName as AsyncTask in the context of
+                                // AuthenticatorActivity
+                                credentials = OwnCloudCredentialsFactory.newSamlSsoCredentials(
+                                        null,                   // unknown
+                                        mLastTarget.mCookie);   // SAML SSO
+                            }
+                            OwnCloudAccount ocAccount = new OwnCloudAccount(
+                                    mLastTarget.mServerUrl, credentials);
                             mOwnCloudClient = OwnCloudClientManagerFactory.getDefaultSingleton().
                                     getClientFor(ocAccount, mService);
                             mStorageManager = null;

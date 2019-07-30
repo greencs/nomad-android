@@ -1,1 +1,1 @@
-La plataforma de productivitat privada (auto-allotjada) que us dóna el control s
+L'app Nextcloud Dev és una instantània de desenvolupament que es pot instal·lar 

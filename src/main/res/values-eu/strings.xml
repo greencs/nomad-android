@@ -18,6 +18,7 @@
     <string name="actionbar_logger">Egunkariak</string>
     <string name="actionbar_mkdir">Karpeta berria</string>
     <string name="actionbar_move">Mugitu</string>
+    <string name="actionbar_open_as_richdocument">Ireki Collabora-rekin</string>
     <string name="actionbar_open_with">Ireki honekin</string>
     <string name="actionbar_search">Bilatu</string>
     <string name="actionbar_see_details">Xehetasunak</string>
@@ -39,9 +40,14 @@
     <string name="auth_bad_oc_version_title">server zerbitzari bertsio ezezaguna</string>
     <string name="auth_can_not_auth_against_server">Ezin da zerbitzariekin kautotu</string>
     <string name="auth_check_server">Egiaztatu zerbitzaria</string>
+    <string name="auth_connecting_auth_server">Autentifikazio zerbitzarira konektatzen...</string>
     <string name="auth_connection_established">Konexioa ezarri da</string>
     <string name="auth_expired_basic_auth_toast">Oraingo pasahitza sartu mesedez</string>
+    <string name="auth_expired_oauth_token_toast">Zure baimena iraungitu da.
+Mesedez, baimendu berriz</string>
+    <string name="auth_expired_saml_sso_token_toast">Zure saioa iraungitu da. Mesdez konektatu berriro</string>
     <string name="auth_fail_get_user_name">Zure zerbitzariak ez du erabiltzaile ID zuzena itzultzen, jarri administratzailearekin harremanetan</string>
+    <string name="auth_getting_authorization">Baimena eskuratzen…</string>
     <string name="auth_host_address">Zerbitzariaren helbidea</string>
     <string name="auth_host_url">Zerbitzariaren helbidea https://…</string>
     <string name="auth_incorrect_address_title">Zerbitzariaren helbidea gaizki dago</string>
@@ -207,7 +213,6 @@
     <string name="end_to_end_encryption_title">Ezarri zifratzea</string>
     <string name="enter_filename">Sartu fitxategi izena</string>
     <string name="error__upload__local_file_not_copied">%1$s ezin da %2$s karpeta lokalera kopiatu</string>
-    <string name="error_retrieving_templates">Errorea txantiloiak eskuratzean</string>
     <string name="error_starting_direct_camera_upload">Akatsa kamera abiaraztean</string>
     <string name="fab_label">Gehitu edo igo</string>
     <string name="fallback_weblogin_back">Atzera</string>
@@ -351,8 +356,8 @@
     <string name="notification_icon">Jakinarazpen ikonoa</string>
     <string name="notifications_loading_activity">Jakinarazpenak kargatzen…</string>
     <string name="notifications_no_results_headline">Jakinarazpenik ez</string>
+    <string name="oauth_check_onoff">izena emanda OAuth 2.0 erabiliz</string>
     <string name="offline_mode">Internet konexiorik ez</string>
-    <string name="overflow_menu">Gehiago menua</string>
     <string name="participate_beta_headline">Dev bertsioa probatu</string>
     <string name="participate_beta_text">Ezaugarri berri guztiak datoz eta punta-puntakoa da. Bug/erroreak gerta daitezke, eta gertatzen direnean, mesedez bidaliguzu topatutakoa</string>
     <string name="participate_contribute_forum_forum">foroa</string>
@@ -416,8 +421,6 @@
     <string name="prefs_show_hidden_files">Erakutsi ezkutuko fitxategiak</string>
     <string name="prefs_sourcecode">Eskuratu iturburu-kodea</string>
     <string name="prefs_storage_path">Biltegiratze helbidea</string>
-    <string name="prefs_synced_folders_local_path_title">Karpeta lokala</string>
-    <string name="prefs_synced_folders_remote_path_title">Urruneko karpeta</string>
     <string name="preview_image_description">Irudi aurreikuspena</string>
     <string name="preview_image_error_unknown_format">Ezin izan da irudia erakutsi</string>
     <string name="preview_sorry">Barkatu</string>
@@ -444,7 +447,6 @@
     <string name="select_all">Hautatu dena</string>
     <string name="select_template">Aukeratu txantiloia</string>
     <string name="send">Bidali</string>
-    <string name="sendbutton_description">Bidali botoiaren ikonoa</string>
     <string name="set_as">Ezarri honela</string>
     <string name="set_picture_as">Erabili argazkia</string>
     <string name="setup_btn_connect">Konektatu</string>
@@ -461,7 +463,6 @@
     <string name="share_link_file_no_exist">Ezin izan da partekatu. Mesedez egiaztatu fitxategia existitzen dela</string>
     <string name="share_link_forbidden_permissions">fitxategia konpartitzeko</string>
     <string name="share_link_password_title">Sartu pasahitza</string>
-    <string name="share_no_expiration_date_label">Ezarri iraungitze-data</string>
     <string name="share_no_password_title">Ezarri pasahitza</string>
     <string name="share_no_users">Oraindik ez da erabiltzaileekin daturik partekatu</string>
     <string name="share_password_title">Pasahitzez babestua</string>
@@ -470,10 +471,8 @@
     <string name="share_privilege_can_edit_create">sortu dezake</string>
     <string name="share_privilege_can_edit_delete">ezabatu dezake</string>
     <string name="share_privilege_can_share">elkarbana dezake</string>
-    <string name="share_privilege_unshare">Ez partekatu</string>
     <string name="share_remote_clarification">%1$s (urrunekoa)</string>
     <string name="share_via_link_edit_permission_label">Baimendu editatzea</string>
-    <string name="share_via_link_expiration_date_label">Ezarri iraungitze-data</string>
     <string name="share_via_link_hide_file_listing_permission_label">Fitxategi zerrenda ezkutatu</string>
     <string name="share_via_link_password_label">Pasahitzarekin babestu</string>
     <string name="share_via_link_section_title">Elkarbanatu lotura</string>
@@ -563,10 +562,7 @@
     <string name="upload_files">Igo fitxategiak</string>
     <string name="upload_list_empty_headline">Ezin dira fitxategiak igo</string>
     <string name="upload_list_empty_text_auto_upload">Edukiak igo edo auto-igotzea aktiba ezazu.</string>
-    <string name="upload_local_storage_full">Biltegiratze lokala beteta</string>
-    <string name="upload_local_storage_not_copied">Ezin izan da fitxategia kopiatu biltegiratze lokalera</string>
     <string name="upload_query_move_foreign_files">Hautatutako fitxategiak ezin dira %1$sra kopiatu ez dagoelako toki nahikorik. Kopiatu ordez bertara mugitu nahi dituzu?</string>
-    <string name="upload_sync_conflict">Sinkronizazio gatazka, ebatzi eskuz</string>
     <string name="upload_unknown_error">Akats ezezaguna</string>
     <string name="uploader_btn_alternative_text">Aukeratu</string>
     <string name="uploader_btn_upload_text">Kargatu</string>
