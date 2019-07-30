@@ -7,7 +7,7 @@
 import com.github.spotbugs.SpotBugsTask
 
 buildscript {
-    ext.kotlin_version = '1.3.40'
+    ext.kotlin_version = '1.3.41'
     repositories {
         google()
         jcenter()
@@ -20,7 +20,7 @@ buildscript {
         mavenCentral()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.4.1'
+        classpath 'com.android.tools.build:gradle:3.4.2'
         classpath('com.dicedmelon.gradle:jacoco-android:0.1.4') {
             exclude group: 'org.codehaus.groovy', module: 'groovy-all'
         }
@@ -56,6 +56,7 @@ configurations {
 
 ext {
     jacocoVersion = "0.8.2"
+    daggerVersion = "2.24"
     androidLibraryVersion = "master-SNAPSHOT"
 
     travisBuild = System.getenv("TRAVIS") == "true"
@@ -78,7 +79,7 @@ repositories {
 // semantic versioning for version code
 def versionMajor = 1
 def versionMinor = 0
-def versionPatch = 1
+def versionPatch = 2
 def versionBuild = 0 // 0-50=Alpha / 51-98=RC / 90-99=stable
 
 def taskRequest = getGradle().getStartParameter().getTaskRequests().toString()
@@ -152,8 +153,8 @@ android {
             versionDev {
                 applicationId "ca.greencs.nomad.beta"
                 dimension "default"
-                versionCode 20190622
-                versionName "20190622"
+                versionCode 20190727
+                versionName "20190727"
             }
 
             qa {
@@ -256,6 +257,7 @@ dependencies {
     implementation 'androidx.appcompat:appcompat:1.0.2'
     implementation 'androidx.cardview:cardview:1.0.0'
     implementation 'androidx.exifinterface:exifinterface:1.0.0'
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.0.0"
     implementation 'com.github.albfernandez:juniversalchardet:2.0.3' // need this version for Android <7
     implementation 'com.google.code.findbugs:annotations:2.0.1'
     implementation 'commons-io:commons-io:2.6'
@@ -273,7 +275,7 @@ dependencies {
     implementation 'com.github.tobiaskaminsky:qrcodescanner:0.1.2.2' // 'com.github.blikoon:QRCodeScanner:0.1.2'
     implementation 'com.google.android:flexbox:1.1.0'
     implementation 'org.parceler:parceler-api:1.1.12'
-    annotationProcessor 'org.parceler:parceler:1.1.12'
+    kapt 'org.parceler:parceler:1.1.12'
     implementation('com.github.bumptech.glide:glide:3.7.0') {
         exclude group: "com.android.support"
     }
@@ -285,26 +287,27 @@ dependencies {
     spotbugsPlugins 'com.h3xstream.findsecbugs:findsecbugs-plugin:1.9.0'
     spotbugsPlugins 'com.mebigfatguy.fb-contrib:fb-contrib:7.4.6'
 
-    implementation 'com.google.dagger:dagger:2.23.2'
-    implementation 'com.google.dagger:dagger-android:2.23.2'
-    implementation 'com.google.dagger:dagger-android-support:2.23.2'
-    kapt 'com.google.dagger:dagger-compiler:2.23.2'
-    kapt 'com.google.dagger:dagger-android-processor:2.23.2'
+    implementation "com.google.dagger:dagger:$daggerVersion"
+    implementation "com.google.dagger:dagger-android:$daggerVersion"
+    implementation "com.google.dagger:dagger-android-support:$daggerVersion"
+    kapt "com.google.dagger:dagger-compiler:$daggerVersion"
+    kapt "com.google.dagger:dagger-android-processor:$daggerVersion"
 
     compileOnly "org.projectlombok:lombok:1.18.8"
     annotationProcessor "org.projectlombok:lombok:1.18.8"
 
-    ktlint "com.pinterest:ktlint:0.33.0"
+    ktlint "com.pinterest:ktlint:0.34.2"
 
     // dependencies for local unit tests
     testImplementation 'junit:junit:4.12'
-    testImplementation 'org.mockito:mockito-core:2.28.2'
+    testImplementation 'org.mockito:mockito-core:3.0.0'
     testImplementation 'androidx.test:core:1.2.0'
     testImplementation 'org.powermock:powermock-core:2.0.2'
     testImplementation 'org.powermock:powermock-module-junit4:2.0.2'
     testImplementation 'org.powermock:powermock-api-mockito2:2.0.2'
     testImplementation 'org.json:json:20180813'
     testImplementation "com.nhaarman.mockitokotlin2:mockito-kotlin:2.1.0"
+    testImplementation "androidx.arch.core:core-testing:2.0.1"
 
     // dependencies for instrumented tests
     // JUnit4 Rules
