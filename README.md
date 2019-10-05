@@ -2,19 +2,19 @@
 
 [![Build Status](https://drone.nextcloud.com/api/badges/nextcloud/android/status.svg)](https://drone.nextcloud.com/nextcloud/android) [![Codacy Badge](https://api.codacy.com/project/badge/Grade/80401cb343854343b4d94acbfb72d3ec)](https://www.codacy.com/app/Nextcloud/android?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=nextcloud/android&amp;utm_campaign=Badge_Grade) [![Releases](https://img.shields.io/github/release/nextcloud/android.svg)](https://github.com/nextcloud/android/releases/latest) [![irc](https://img.shields.io/badge/IRC-%23nextcloud--mobile%20on%20freenode-blue.svg)](https://webchat.freenode.net/?channels=nextcloud-mobile)
 
-[<img src="https://play.google.com/intl/en_us/badges/images/generic/en_badge_web_generic.png" 
-      alt="Download from Google Play" 
-      height="80">](https://play.google.com/store/apps/details?id=com.nextcloud.client)
+[<img src="https://play.google.com/intl/en_us/badges/images/generic/en_badge_web_generic.png"
+      alt="Download from Google Play"
+      height="80">](https://play.google.com/store/apps/details?id=ca.greencs.nomad)
 [<img src="https://f-droid.org/badge/get-it-on.png"
       alt="Get it on F-Droid"
-      height="80">](https://f-droid.org/packages/com.nextcloud.client/)
+      height="80">](https://f-droid.org/packages/ca.greencs.nomad/)
 
 **The Android client for [Nextcloud](https://nextcloud.com). Easily work with your data on your Nextcloud.**
 
 ![App screenshots](/doc/Nextcloud_Android_Screenshots.png "App screenshots")
 
 ## How to contribute
-If you want to [contribute](https://nextcloud.com/contribute/) to Nextcloud, you are very welcome: 
+If you want to [contribute](https://nextcloud.com/contribute/) to Nextcloud, you are very welcome:
 
 - on our IRC channels [![irc](https://img.shields.io/badge/IRC-%23nextcloud%20on%20freenode-orange.svg)](https://webchat.freenode.net/?channels=nextcloud) and [![irc](https://img.shields.io/badge/IRC-%23nextcloud--mobile%20on%20freenode-blue.svg)](https://webchat.freenode.net/?channels=nextcloud-mobile) on freenode
 - our forum at https://help.nextcloud.com
@@ -45,7 +45,7 @@ Easy starting points are also reviewing [pull requests](https://github.com/nextc
 #### With a computer:
 - connect the device via USB
 - open command prompt/terminal
-- enter `adb logcat | grep "$(adb shell ps | awk '/com.nextcloud.client/{print $2}')" > logcatOutput.txt` to save the output to this file
+- enter `adb logcat | grep "$(adb shell ps | awk '/ca.greencs.nomad/{print $2}')" > logcatOutput.txt` to save the output to this file
 
 **Note:** You must have [adb](https://developer.android.com/studio/releases/platform-tools.html) installed first!
 
@@ -55,7 +55,7 @@ Easy starting points are also reviewing [pull requests](https://github.com/nextc
 - enter `logcat -d -f /sdcard/logcatOutput.txt`
 - you will have to filter the output manually, as above approach is not working on device
 
-or 
+or
 
 - use [CatLog](https://play.google.com/store/apps/details?id=com.nolanlawson.logcat) or [aLogcat](https://play.google.com/store/apps/details?id=org.jtb.alogcat)
 
@@ -63,7 +63,7 @@ or
 
 ## Development version
 - [APK (direct download)](https://download.nextcloud.com/android/dev/latest.apk)
-- [F-Droid](https://f-droid.org/en/packages/com.nextcloud.android.beta/)
+- [F-Droid](https://f-droid.org/repository/browse/?fdfilter=nextcloud&fdid=ca.greencs.nomad.beta)
 
 ## Support
 

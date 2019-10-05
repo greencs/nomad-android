@@ -93,15 +93,6 @@
                 app:cornerRadius="@dimen/button_corner_radius" />
         </LinearLayout>
 
-        <TextView
-            android:id="@+id/host_own_server"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
-            android:layout_marginTop="10dp"
-            android:gravity="center_horizontal"
-            android:onClick="onHostYourOwnServerClick"
-            android:text="@string/host_your_own_server"/>
     </LinearLayout>
 
 </LinearLayout>
